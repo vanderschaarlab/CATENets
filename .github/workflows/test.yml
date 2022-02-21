@@ -59,5 +59,7 @@ jobs:
         run: pytest -vvvsx -m "not slow"
         if: ${{ matrix.os != 'windows-latest' }}
       - name: Test with pytest Windows
-        run: pytest -vvvsx -m "not slow" -k test_torch
+        run: |
+            cd tests\datasets
+            pytest -vvvsx -m "not slow"
         if: ${{ matrix.os == 'windows-latest' }}
