@@ -62,4 +62,8 @@ jobs:
         run: |
             cd tests\datasets
             pytest -vvvsx -m "not slow"
+            cd ..\..
+
+            cd tests\models\torch
+            pytest -vvvsx -m "not slow"
         if: ${{ matrix.os == 'windows-latest' }}
