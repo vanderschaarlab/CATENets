@@ -1,12 +1,13 @@
 name: CATENets Tests
-
+    
 on:
   push:
-    branches: [main, release, fix_automated_testing]
+    branches: [main, release]
   pull_request:
     types: [opened, synchronize, reopened]
   schedule:
     - cron:  '0 0 * * 0'
+  workflow_dispatch:
 
 
 jobs:
