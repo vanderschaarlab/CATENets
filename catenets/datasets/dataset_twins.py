@@ -5,9 +5,11 @@ Load real-world individualized treatment effects estimation datasets
 - Reference: http://data.nber.org/data/linked-birth-infant-death-data-vital-statistics-data.html
 """
 # stdlib
+import os
 import random
 from pathlib import Path
 from typing import Tuple
+
 
 # third party
 import numpy as np
@@ -61,7 +63,12 @@ def preprocess(
     random.seed(seed)
 
     # Load original data (11400 patients, 30 features, 2 dimensional potential outcomes)
-    df = pd.read_csv(fn_csv)
+    # def is_gzipped(filepath):
+    #     with open(filepath, 'rb') as f:
+    #         return f.read(2) == b'\x1f\x8b'
+
+    # compression = "gzip" if (os.path.splitext(fn_csv)[1] == ".gz" and is_gzipped(fn_csv)) else None
+    df = pd.read_csv(fn_csv, compression=None)
 
     cleaned_columns = []
     for col in df.columns:
