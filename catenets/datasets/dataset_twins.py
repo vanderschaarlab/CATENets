@@ -63,11 +63,7 @@ def preprocess(
     random.seed(seed)
 
     # Load original data (11400 patients, 30 features, 2 dimensional potential outcomes)
-    # def is_gzipped(filepath):
-    #     with open(filepath, 'rb') as f:
-    #         return f.read(2) == b'\x1f\x8b'
 
-    # compression = "gzip" if (os.path.splitext(fn_csv)[1] == ".gz" and is_gzipped(fn_csv)) else None
     df = pd.read_csv(fn_csv, compression=None)
 
     cleaned_columns = []
