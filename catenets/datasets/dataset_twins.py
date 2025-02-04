@@ -61,7 +61,7 @@ def preprocess(
     random.seed(seed)
 
     # Load original data (11400 patients, 30 features, 2 dimensional potential outcomes)
-    df = pd.read_csv(fn_csv)
+    df = pd.read_csv(fn_csv, compression=None)
 
     cleaned_columns = []
     for col in df.columns:
