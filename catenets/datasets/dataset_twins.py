@@ -5,11 +5,9 @@ Load real-world individualized treatment effects estimation datasets
 - Reference: http://data.nber.org/data/linked-birth-infant-death-data-vital-statistics-data.html
 """
 # stdlib
-import os
 import random
 from pathlib import Path
 from typing import Tuple
-
 
 # third party
 import numpy as np
