@@ -4,10 +4,10 @@ set -e
 # Update the package list
 apt-get update
 
-# Install Python and development headers, plus LLVM 10 and clang-10 as equivalents for llvm-toolset-7.0
-apt-get install -y python3 python3-dev llvm-10 clang-10
+# Install Python and development headers, plus LLVM and clang as the available equivalents.
+apt-get install -y python3 python3-dev llvm clang
 
-# Python: upgrade pip and install packaging tools
+# Upgrade pip and install Python packaging tools
 python3 -m pip install --upgrade pip
 python3 -m pip install setuptools wheel twine auditwheel
 
