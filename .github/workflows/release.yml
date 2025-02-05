@@ -29,8 +29,8 @@ jobs:
 
   deploy_linux:
     runs-on: ubuntu-latest
-    container: 
-      image: node:20-bullseye
+    container:
+      image: node:20-bullseye  # Use the official Node.js 20 image based on Debian
     strategy:
       matrix:
         python-version:
@@ -42,9 +42,18 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
+
+      - name: Make the Linux release script executable (optional if set in repo)
+        run: chmod +x .github/workflows/scripts/release_linux.sh
+
       - name: Set target Python version PATH
+        run: echo "/opt/python/${{ matrix.python-version }}/bin" >> $GITHUB_PATH
+
+      - name: Install Python Build Dependencies
         run: |
-            echo "/opt/python/${{ matrix.python-version }}/bin" >> $GITHUB_PATH
+          apt-get update
+          apt-get install -y python3 python3-pip python3-dev build-essential
+
       - name: Build and publish
         env:
           TWINE_USERNAME: __token__
