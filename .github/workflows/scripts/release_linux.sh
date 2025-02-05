@@ -1,12 +1,11 @@
 #!/bin/bash
-
 set -e
 
 # Update the package list
 apt-get update
 
-# Install Python and development headers, plus LLVM 7 and clang-7 to match llvm-toolset-7.0 functionality.
-apt-get install -y python3 python3-dev llvm-7 clang-7
+# Install Python and development headers, plus LLVM 10 and clang-10 as equivalents for llvm-toolset-7.0
+apt-get install -y python3 python3-dev llvm-10 clang-10
 
 # Python: upgrade pip and install packaging tools
 python3 -m pip install --upgrade pip
